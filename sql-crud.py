@@ -24,14 +24,14 @@ base = declarative_base()
 
 # class based model "countrys visited" table
 class VisitedCountries(base):
-    __tablename__ = "Visited_Countries"
+    __tablename__ = "Visited Countries"
     id = Column(Integer, primary_key=True)
     country_name = Column(String)
     country_capital = Column(String)
     language = Column(String)
-    # size = Column(String)
-    # colors_of_flag = Column(String)
-    # whats_good = Column(String)
+    flagcolors = Column(String)
+    whats_good = Column(String)
+    size = Column(String)
 
 
 # instead of connecting to database directly, we will ask for a session
@@ -50,49 +50,54 @@ sweden = VisitedCountries(
     country_name="Sweden",
     country_capital="Stockholm",
     language="Swedish",
-    # size='big',
-    # colors_of_flag='Yellow and Blue',
-    # whats_good="Kanelbulle"
+    flagcolors="Yellow and blue",
+    whats_good="Kanelbulle",
+    size='big'
 )
 
 denmark = VisitedCountries(
     country_name="Denmark",
     country_capital="Copenhagen",
     language="Danish",
-    # colors_of_flag='Yellow and Blue',
-    # whats_good="Lego"
+    flagcolors="Red and White",
+    whats_good="Lego",
+    size="big"
 )
 
 france = VisitedCountries(
     country_name="France",
     country_capital="Paris",
     language="French",
-    # colors_of_flag='Yellow and Blue',
-    # whats_good="Croissant"
+    flagcolors="Red, White and Blue",
+    whats_good="Croissant",
+    size="big"
 )
 
 italy = VisitedCountries(
     country_name="Italy",
     country_capital="Rome",
     language="Italian",
-    # colors_of_flag='Yellow and Blue',
-    # whats_good="Pizza"
+    flagcolors="Green, White and Red",
+    whats_good="Pizza",
+    size="big"
 )
 
 switzerland = VisitedCountries(
     country_name="Switzerland",
     country_capital="Bern",
     language="Italian",
-    # colors_of_flag='Yellow and Blue',
-    # whats_good="Chocolate"
+    flagcolors="Red and White",
+    whats_good="Chocolate",
+    size="big"
 )
 
 spain = VisitedCountries(
     country_name="Spain",
     country_capital="Madrid",
     language="Spanish",
-    # colors_of_flag='Yellow and Blue',
-    # whats_good="Siesta"
+    flagcolors="Red and Yellow",
+    whats_good="Siesta",
+    size="big"
 )
 
 # add instance to our session
@@ -201,6 +206,7 @@ session.add(switzerland)
 # countries = session.query(VisitedCountries)
 # for country in countries:
 #     session.delete(country)
+# print('Table deleted')
 
 
 # commit our session to database
@@ -227,8 +233,8 @@ for country in countries:
         country.country_name,
         country.country_capital,
         country.language,
-        # country.size,
-        # country.colors_of_flag,
-        # country.whats_good,
+        country.flagcolors,
+        country.size,
+        country.whats_good,
         sep=" | "
     )
